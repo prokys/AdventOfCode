@@ -4,14 +4,14 @@ package day1;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
+import utils.*;
 
 
 public class Day1 {
-    public static ArrayList<String> inputArrayList = new ArrayList<String>();
+    public static ArrayList<String> inputArrayList = Utils.readFileAndStoreValues("src\\day1\\input.txt");
     public static ArrayList<String> numbersArrayList = new ArrayList<String>();
     public static ArrayList<String> twoNumbersArrayList = new ArrayList<String>();
     public static void main(String args[]){
-        readFileAndStoreValues();
         String[] inputArray = inputArrayList.toArray(new String[0]);
 //        System.out.println(inputArray[0]);
 //        findNumbersInText(inputArray);
@@ -40,19 +40,7 @@ public class Day1 {
             array[i] = array[i].replaceAll("nine", "9");
         }
     }
-    public static void readFileAndStoreValues(){
-        try{
-            File file = new File("src\\day1\\input.txt");
-            Scanner scanner = new Scanner(file);
-            do {
-                inputArrayList.add(scanner.next());
-            }while (scanner.hasNext());
-        }
-        catch(Exception e){
-            System.out.println("File does not exist");
-            e.printStackTrace();
-        }
-    }
+
     public static void reduceArrayToNumbers(String[] array){
         for (String value : array){
             var asd = new StringBuilder(value);
@@ -137,10 +125,5 @@ public class Day1 {
             finalNumber = finalNumber + Integer.parseInt(value);
         }
         System.out.println(finalNumber);
-    }
-    public static void printArray(String[] array){
-        for (int i=0; i<array.length;i++){
-            System.out.println(array[i]);
-        }
     }
 }
