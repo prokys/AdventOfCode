@@ -31,10 +31,27 @@ public class Day2 {
     }
     public static void checkColors(String array[], Integer positionArray[]){
         for (int i = 1; i<positionArray.length; i++){
+            Boolean red = true;
+            Boolean blue = true;
+            Boolean green = true;
             for (int y=positionArray[i-1]; y<positionArray[i]; y++ ){
                 if (array[y].startsWith("red")){
-//                    number = number + Integer.parseInt(array[(positionArray[i-1]+1)]);
+                    if (Integer.parseInt(array[y-1])>12){
+                        red = false;
+                    }
+                } else if (array[y].startsWith("blue")) {
+                    if (Integer.parseInt(array[y - 1]) > 14) {
+                        blue = false;
+                    }
+                }else if (array[y].startsWith("green")) {
+                    if (Integer.parseInt(array[y - 1]) > 13) {
+                        green = false;
+                    }
                 }
+            }
+
+            if(red == true && blue == true && green == true){
+                number = number + (Integer.parseInt(array[(positionArray[i-1])+1].replaceAll(":","")));
             }
         }
     }
