@@ -20,7 +20,7 @@ public class Day5 {
     private static ArrayList<Long> locations = new ArrayList<Long>();
 
     public static void main(String[] args) {
-//        partOne();
+        partOne();
         partTwo();
 
     }
@@ -34,17 +34,19 @@ public class Day5 {
     }
 
     private static void partTwo(){
+        finalNumber = Long.parseLong(inputArrayList.get(seed+1));
         for (int i = seed+1; i<seedToSoil; i+=2){
             long seedValue = Long.parseLong(inputArrayList.get(i));
             long seedRange = Long.parseLong(inputArrayList.get(i+1));
 
                 for (long y = seedValue; y<(seedValue+seedRange); y++){
-                    locations.add(getLocation(y));
-            }
+                    if (finalNumber > getLocation(y)){
+                        finalNumber = getLocation(y);
+                    }
+                }
 
 
         }
-        getFinalNumber();
         System.out.println(finalNumber);
     }
 
