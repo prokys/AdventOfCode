@@ -13,7 +13,7 @@ public class Day6 {
     private static long finalNumber = 1;
 
     public static void main(String[] args) {
-//        partOne();
+        partOne();
         partTwo();
     }
 
@@ -22,6 +22,7 @@ public class Day6 {
             finalNumber = finalNumber*getTraveledDistance(Long.parseLong(inputArrayList.get(i)), Long.parseLong(inputArrayList.get(i+distance)));
         }
         System.out.println(finalNumber);
+        finalNumber=1;
     }
     public static void partTwo(){
         long combinedTime = combineInput(time+1, distance);
