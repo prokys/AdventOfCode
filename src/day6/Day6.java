@@ -10,17 +10,26 @@ public class Day6 {
     private static int time = inputArrayList.indexOf("Time:");
     private static int distance = inputArrayList.indexOf("Distance:");
 
-    private static int finalNumber = 1;
+    private static long finalNumber = 1;
 
     public static void main(String[] args) {
-        for (int i = time+1; i < distance; i++){
-            finalNumber = finalNumber*getTraveledDistance(Integer.parseInt(inputArrayList.get(i)), Integer.parseInt(inputArrayList.get(i+distance)));
-        }
-
-        System.out.println(finalNumber);
+//        partOne();
+        partTwo();
     }
 
-    public static int getTraveledDistance(int maxTime, int maxDistance){
+    public static void partOne(){
+        for (int i = time+1; i < distance; i++){
+            finalNumber = finalNumber*getTraveledDistance(Long.parseLong(inputArrayList.get(i)), Long.parseLong(inputArrayList.get(i+distance)));
+        }
+        System.out.println(finalNumber);
+    }
+    public static void partTwo(){
+        long combinedTime = combineInput(time+1, distance);
+        long combinedDistance = combineInput(distance+1, inputArrayList.size());
+        System.out.println(getTraveledDistance(combinedTime, combinedDistance));
+    }
+
+    public static long getTraveledDistance(long maxTime, long maxDistance){
         int successfulAttempts=0;
         for (int i=1; i < maxTime; i++){
             if (i*(maxTime-i) > maxDistance){
@@ -28,5 +37,12 @@ public class Day6 {
             }
         }
         return successfulAttempts;
+    }
+    public static long combineInput(int start, int end){
+        String combined="";
+        for (int i = start; i < end; i++){
+            combined= combined+inputArrayList.get(i);
+        }
+        return Long.parseLong(combined);
     }
 }
