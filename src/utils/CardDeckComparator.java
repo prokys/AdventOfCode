@@ -5,22 +5,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CardDeckComparator implements Comparator<String> {
-    private static final Map<Character, Integer> customOrder = new HashMap<>();
 
-    static {
-        customOrder.put('2', 2);
-        customOrder.put('3', 3);
-        customOrder.put('4', 4);
-        customOrder.put('5', 5);
-        customOrder.put('6', 6);
-        customOrder.put('7', 7);
-        customOrder.put('8', 8);
-        customOrder.put('9', 9);
-        customOrder.put('T', 10);
-        customOrder.put('J', 11);
-        customOrder.put('Q', 12);
-        customOrder.put('K', 13);
-        customOrder.put('A', 14);
+    private static Map<Character, Integer> customOrder = new HashMap<>();
+
+    public CardDeckComparator(Map<Character, Integer> customOrderMap) {
+        customOrder = customOrderMap;
     }
 
     @Override
