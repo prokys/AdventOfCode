@@ -2,47 +2,37 @@ package day1;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import utils.*;
 
 
 public class Day1 {
-    public static ArrayList<String> inputArrayList = Utils.readFileAndStoreValues("src\\main\\java\\day1\\input.txt");
-    public static ArrayList<String> numbersArrayListPartOne = new ArrayList<String>();
-    public static ArrayList<String> twoNumbersArrayListPartOne = new ArrayList<String>();
-    public static ArrayList<String> numbersArrayListPartTwo = new ArrayList<String>();
-    public static ArrayList<String> twoNumbersArrayListPartTwo = new ArrayList<String>();
-    public static void main(String args[]){
-        String[] inputArray = inputArrayList.toArray(new String[0]);
-        reduceArrayToNumbers(inputArray);
-        String[] numbersArray = numbersArrayListPartOne.toArray(new String[0]);
-        twoNumbersArrayListPartOne = reduceArrayToTwoNumbers(numbersArray);
-        String[] twoNumbersArray = twoNumbersArrayListPartOne.toArray(new String[0]);
-        printFinalNumber(twoNumbersArray);
-
-        reduceArrayToNumbersWithNumbersAsString(inputArray);
-        numbersArray = numbersArrayListPartTwo.toArray(new String[0]);
-        reduceArrayToTwoNumbers(numbersArray);
-        twoNumbersArrayListPartTwo = reduceArrayToTwoNumbers(numbersArray);
-        twoNumbersArray = twoNumbersArrayListPartTwo.toArray(new String[0]);
-        printFinalNumber(twoNumbersArray);
+    public static List<String> inputArrayList = Utils.readFileAndStoreValues("src\\main\\java\\day1\\input.txt");
+    public static List<String> numbersArrayListPartOne = new ArrayList<>();
+    public static List<String> twoNumbersArrayListPartOne = new ArrayList<>();
+    public static List<String> numbersArrayListPartTwo = new ArrayList<>();
+    public static List<String> twoNumbersArrayListPartTwo = new ArrayList<>();
+    public static void main(String[] args){
+        partOne();
+        partTwo();
     }
 
-    public static void findNumbersInText(String[] array){
-        for (int i=0; i<array.length; i++){
-            array[i] = array[i].replaceAll("one", "1");
-            array[i] = array[i].replaceAll("two", "2");
-            array[i] = array[i].replaceAll("three", "3");
-            array[i] = array[i].replaceAll("four", "4");
-            array[i] = array[i].replaceAll("five", "5");
-            array[i] = array[i].replaceAll("six", "6");
-            array[i] = array[i].replaceAll("seven", "7");
-            array[i] = array[i].replaceAll("eight", "8");
-            array[i] = array[i].replaceAll("nine", "9");
-        }
+    public static void partOne(){
+        numbersArrayListPartOne = reduceListToNumbers(inputArrayList);
+        twoNumbersArrayListPartOne = reduceListToTwoNumbers(numbersArrayListPartOne);
+        System.out.println(getFinalNumber(twoNumbersArrayListPartOne));
+
     }
-    public static void reduceArrayToNumbers(String[] array){
-        for (String value : array){
+    public static void partTwo(){
+        numbersArrayListPartTwo = reduceListToNumbersWithNumbersAsString(inputArrayList);
+        twoNumbersArrayListPartTwo = reduceListToTwoNumbers(numbersArrayListPartTwo);
+        System.out.println(getFinalNumber(twoNumbersArrayListPartTwo));
+    }
+
+    public static List<String> reduceListToNumbers(List<String> listOfValues){
+        List<String> resultsList = new ArrayList<>();
+        for (String value : listOfValues){
             var asd = new StringBuilder(value);
             StringBuilder stringBuilder = new StringBuilder();
             for (int y=0; y<asd.length();y++){
@@ -50,12 +40,14 @@ public class Day1 {
                     stringBuilder.append(asd.charAt(y));
                 }
             }
-            numbersArrayListPartOne.add(stringBuilder.toString());
+            resultsList.add(stringBuilder.toString());
         }
+        return resultsList;
     }
 
-    public static void reduceArrayToNumbersWithNumbersAsString(String[] array){
-        for (String value : array){
+    public static List<String> reduceListToNumbersWithNumbersAsString(List<String> listOfValues){
+        List<String> resultsList = new ArrayList<>();
+        for (String value : listOfValues){
             var asd = new StringBuilder(value);
             StringBuilder stringBuilder = new StringBuilder();
             for (int y=0; y<asd.length();y++){
@@ -119,12 +111,13 @@ public class Day1 {
                     }
                 }catch (Exception ignore){}
             }
-            numbersArrayListPartTwo.add(stringBuilder.toString());
+            resultsList.add(stringBuilder.toString());
         }
+        return resultsList;
     }
-    public static ArrayList<String> reduceArrayToTwoNumbers(String[] array){
-            ArrayList<String> reducedArrayList = new ArrayList<String>();
-        for (String value : array){
+    public static List<String> reduceListToTwoNumbers(List<String> listOfNumbers){
+            List<String> reducedArrayList = new ArrayList<>();
+        for (String value : listOfNumbers){
             var asd = new StringBuilder(value);
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append(asd.charAt(0));
@@ -134,11 +127,11 @@ public class Day1 {
         return reducedArrayList;
     }
 
-    public static void printFinalNumber(String[] array){
+    public static int getFinalNumber(List<String> listOfTwoNumbers){
         int finalNumber = 0;
-        for (String value : array){
+        for (String value : listOfTwoNumbers){
             finalNumber = finalNumber + Integer.parseInt(value);
         }
-        System.out.println(finalNumber);
+        return finalNumber;
     }
 }
