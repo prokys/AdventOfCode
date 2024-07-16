@@ -5,7 +5,7 @@ import utils.Utils;
 import java.util.ArrayList;
 
 public class Day2 {
-    public static ArrayList<String> inputArrayList = Utils.readFileAndStoreValues("src\\day2\\input.txt");
+    public static ArrayList<String> inputArrayList = Utils.readFileAndStoreValues("src\\main\\java\\day2\\input.txt");
     public static ArrayList<Integer> gamePositionsList = new ArrayList<Integer>();
     public static int partOneNumber =0;
     public static int partTwoNumber =0;

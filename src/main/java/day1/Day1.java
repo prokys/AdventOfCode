@@ -7,7 +7,7 @@ import utils.*;
 
 
 public class Day1 {
-    public static ArrayList<String> inputArrayList = Utils.readFileAndStoreValues("src\\day1\\input.txt");
+    public static ArrayList<String> inputArrayList = Utils.readFileAndStoreValues("src\\main\\java\\day1\\input.txt");
     public static ArrayList<String> numbersArrayListPartOne = new ArrayList<String>();
     public static ArrayList<String> twoNumbersArrayListPartOne = new ArrayList<String>();
     public static ArrayList<String> numbersArrayListPartTwo = new ArrayList<String>();

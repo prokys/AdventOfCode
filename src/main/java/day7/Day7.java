@@ -6,7 +6,7 @@ import utils.Utils;
 import java.util.*;
 
 public class Day7 {
-    public static List<String> inputArrayList = Utils.readFileAndStoreValues("src\\day7\\input.txt");
+    public static List<String> inputArrayList = Utils.readFileAndStoreValues("src\\main\\java\\day7\\input.txt");
     public static List<String> fives = new ArrayList<>();
     public static List<String> fours = new ArrayList<>();
     public static List<String> fullHouses = new ArrayList<>();

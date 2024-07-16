@@ -5,7 +5,7 @@ import utils.Utils;
 import java.util.ArrayList;
 
 public class Day4 {
-    public static ArrayList<String> inputArrayList = Utils.readFileAndStoreValues("src\\day4\\input.txt");
+    public static ArrayList<String> inputArrayList = Utils.readFileAndStoreValues("src\\main\\java\\day4\\input.txt");
     public static ArrayList<Integer> scratchCardNumbersList = new ArrayList<Integer>();
 
     public static int firstWinnersNumberIndex;

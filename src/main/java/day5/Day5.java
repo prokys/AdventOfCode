@@ -5,7 +5,7 @@ import utils.Utils;
 import java.util.ArrayList;
 
 public class Day5 {
-    public static ArrayList<String> inputArrayList = Utils.readFileAndStoreValues("src\\day5\\input.txt");
+    public static ArrayList<String> inputArrayList = Utils.readFileAndStoreValues("src\\main\\java\\day5\\input.txt");
     private static int seed = inputArrayList.indexOf("seeds:");
     private static int seedToSoil = inputArrayList.indexOf("seed-to-soil");
     private static  int soilToFertilizer= inputArrayList.indexOf("soil-to-fertilizer");
