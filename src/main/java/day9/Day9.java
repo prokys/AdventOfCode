@@ -17,7 +17,7 @@ public class Day9 {
     }
 
     public static void partOne(){
-        splitArrayList = splitListBySequencesAndMakeItInteger(inputArrayList);
+        splitArrayList = splitListBySequencesAndMakeItInteger(inputArrayList, 21);
         for (List<Integer> integers : splitArrayList) {
             finalNumber = finalNumber + sumForNextNumber(getListsOfCalculatedValues(integers));
         }
@@ -56,20 +56,13 @@ public class Day9 {
         }
         return nextNumber;
     }
-    public static int subForNextNumber(List<List<Integer>> listOfIntegers){
-        int nextNumber = 0;
-        for (List<Integer> integers : listOfIntegers) {
-            nextNumber = nextNumber - integers.get(integers.size() - 1);
-        }
-        return nextNumber;
-    }
 
-    public static List<List<Integer>> splitListBySequencesAndMakeItInteger(List<String> listToTransfer){
+    public static List<List<Integer>> splitListBySequencesAndMakeItInteger(List<String> listToTransfer, int howMayEntriesInOneLine){
             List<List<Integer>> newList = new ArrayList<>();
-        for (int i = 0; i < (listToTransfer.size()/21); i++){
+        for (int i = 0; i < (listToTransfer.size()/howMayEntriesInOneLine); i++){
             List<Integer> tempValueList = new ArrayList<>();
-            for (int y = 0; y<21; y++){
-                tempValueList.add(Integer.parseInt(listToTransfer.get(y+(i*21))));
+            for (int y = 0; y<howMayEntriesInOneLine; y++){
+                tempValueList.add(Integer.parseInt(listToTransfer.get(y+(i*howMayEntriesInOneLine))));
             }
             newList.add(i, tempValueList);
         }
