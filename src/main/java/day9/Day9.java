@@ -3,6 +3,7 @@ package day9;
 import utils.Utils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Day9 {
@@ -11,16 +12,28 @@ public class Day9 {
 
     public static int finalNumber = 0;
     public static void main(String[] args) {
-        splitArrayList = splitListBySequencesAndMakeItInteger(inputArrayList);
-        for (List<Integer> integers : splitArrayList) {
-            finalNumber = finalNumber + findNextNumber(integers);
-        }
-        System.out.println(finalNumber);
-
+        partOne();
+        partTwo();
     }
 
-    public static int findNextNumber(List<Integer> list) {
-        int nextNumber = 0;
+    public static void partOne(){
+        splitArrayList = splitListBySequencesAndMakeItInteger(inputArrayList);
+        for (List<Integer> integers : splitArrayList) {
+            finalNumber = finalNumber + sumForNextNumber(getListsOfCalculatedValues(integers));
+        }
+        System.out.println(finalNumber);
+        finalNumber = 0;
+    }
+
+    public static void partTwo(){
+        for (List<Integer> integers : splitArrayList) {
+            Collections.reverse(integers);
+            finalNumber = finalNumber + sumForNextNumber(getListsOfCalculatedValues(integers));
+        }
+        System.out.println(finalNumber);
+    }
+
+    public static List<List<Integer>> getListsOfCalculatedValues(List<Integer> list) {
         List<List<Integer>> tempList = new ArrayList<>();
         tempList.add(list);
 
@@ -33,8 +46,20 @@ public class Day9 {
             }
             tempList.add(calculatedValuesList);
         }
-        for (List<Integer> integers : tempList) {
+
+        return tempList;
+    }
+    public static int sumForNextNumber(List<List<Integer>> listOfIntegers){
+        int nextNumber = 0;
+        for (List<Integer> integers : listOfIntegers) {
             nextNumber = nextNumber + integers.get(integers.size() - 1);
+        }
+        return nextNumber;
+    }
+    public static int subForNextNumber(List<List<Integer>> listOfIntegers){
+        int nextNumber = 0;
+        for (List<Integer> integers : listOfIntegers) {
+            nextNumber = nextNumber - integers.get(integers.size() - 1);
         }
         return nextNumber;
     }
