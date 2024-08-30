@@ -2,52 +2,46 @@ package utils;
 
 import java.util.Objects;
 
-public class PositionOfChar {
-    private int columnPosition;
-    private int rowPosition;
+public class PositionOfChar extends Position{
 
-    public PositionOfChar(int column, int row){
-        this.columnPosition= column;
-        this.rowPosition = row;
+    private String movedFrom;
+
+    public PositionOfChar(int column, int row) {
+        super(column, row);
+    }
+
+    public PositionOfChar(PositionOfChar position){
+        this.setColumnPosition(position.getColumnPosition());
+        this.setRowPosition(position.getRowPosition());
+        this.movedFrom = position.movedFrom;
     }
 
     public PositionOfChar() {
+
     }
 
-    public int getRowPosition() {
-        return rowPosition;
+
+    public String getMovedFrom() {
+        return movedFrom;
     }
 
-    public void setRowPosition(int rowPosition) {
-        this.rowPosition = rowPosition;
-    }
-
-    public int getColumnPosition() {
-        return columnPosition;
-    }
-
-    public void setColumnPosition(int columnPosition) {
-        this.columnPosition = columnPosition;
+    public void setMovedFrom(String movedFrom) {
+        this.movedFrom = movedFrom;
     }
 
     @Override
     public String toString() {
         return "PositionOfChar{" +
-                "columnPosition=" + columnPosition +
-                ", rowPosition=" + rowPosition +
+                "columnPosition=" + getColumnPosition() +
+                ", rowPosition=" + getRowPosition() +
+                ", movedFrom='" + movedFrom + '\'' +
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        PositionOfChar that = (PositionOfChar) o;
-        return columnPosition == that.columnPosition && rowPosition == that.rowPosition;
-    }
+
 
     @Override
     public int hashCode() {
-        return Objects.hash(columnPosition, rowPosition);
+        return Objects.hash(movedFrom);
     }
 }
