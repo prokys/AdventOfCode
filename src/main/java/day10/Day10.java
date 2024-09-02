@@ -24,7 +24,6 @@ public class Day10 {
     public static int finalNumber1 = 0;
     public static void main(String[] args) {
         partOne();
-        System.out.println(inputArrayList.size());
         partTwo();
     }
     public static void partOne(){
@@ -43,9 +42,6 @@ public class Day10 {
     public static void partTwo(){
         for (PositionOfChar position : knownPositions){
             addInsideCoordinatesToList(position);
-        }
-        for (Position position : insidePositions){
-            System.out.println(position);
         }
 
         System.out.println(insidePositions.size());
@@ -72,7 +68,29 @@ public class Day10 {
                                 if (!insidePositions.contains(positionToAdd)){
                                     insidePositions.add(positionToAdd);
                                 }
-
+                            }
+                        }
+                        for (int i = 1; i < 100; i++) {
+                            positionToCompare.setRowPosition(positionToCompare.getRowPosition()-1);
+                            if (knownPositions.contains(positionToCompare)){
+                                break;
+                            } else if (positionToCompare.getRowPosition() >= 0 && positionToCompare.getRowPosition() <= inputArrayList.get(0).length()-1){
+                                Position positionToAdd = new Position(positionToCompare);
+                                if (!insidePositions.contains(positionToAdd)){
+                                    insidePositions.add(positionToAdd);
+                                }
+                            }
+                        }
+                    } else if (charToCompare == '|') {
+                        for (int i = 1; i < 100; i++) {
+                            positionToCompare.setRowPosition(positionToCompare.getRowPosition()-1);
+                            if (knownPositions.contains(positionToCompare)){
+                                break;
+                            } else if (positionToCompare.getRowPosition() >= 0 && positionToCompare.getRowPosition() <= inputArrayList.get(0).length()-1){
+                                Position positionToAdd = new Position(positionToCompare);
+                                if (!insidePositions.contains(positionToAdd)){
+                                    insidePositions.add(positionToAdd);
+                                }
                             }
                         }
                     }
@@ -81,11 +99,22 @@ public class Day10 {
                 case "down" -> {
 
                     if (charToCompare == '7'){
-                        for (int i = 1; i < 10; i++) {
+                        for (int i = 1; i < 100; i++) {
                             positionToCompare.setColumnPosition(positionToCompare.getColumnPosition()-1);
                             if (knownPositions.contains(positionToCompare)){
                                 break;
                             }else if (positionToCompare.getColumnPosition() >= 0 && positionToCompare.getColumnPosition() <= inputArrayList.size()-1){
+                                Position positionToAdd = new Position(positionToCompare);
+                                if (!insidePositions.contains(positionToAdd)){
+                                    insidePositions.add(positionToAdd);
+                                }
+                            }
+                        }
+                        for (int i = 1; i < 100; i++) {
+                            positionToCompare.setRowPosition(positionToCompare.getRowPosition()+1);
+                            if (knownPositions.contains(positionToCompare)){
+                                break;
+                            } else if (positionToCompare.getRowPosition() >= 0 && positionToCompare.getRowPosition() <= inputArrayList.get(0).length()-1){
                                 Position positionToAdd = new Position(positionToCompare);
                                 if (!insidePositions.contains(positionToAdd)){
                                     insidePositions.add(positionToAdd);
@@ -97,8 +126,31 @@ public class Day10 {
                 }
                 case "left" -> {
 
-                    if (charToCompare == '-' || charToCompare == 'J'){
-                        for (int i = 1; i < 10; i++) {
+                    if (charToCompare == 'J'){
+                        for (int i = 1; i < 100; i++) {
+                            positionToCompare.setColumnPosition(positionToCompare.getColumnPosition()+1);
+                            if (knownPositions.contains(positionToCompare)){
+                                break;
+                            } else if (positionToCompare.getColumnPosition() >= 0 && positionToCompare.getColumnPosition() <= inputArrayList.size()-1){
+                                Position positionToAdd = new Position(positionToCompare);
+                                if (!insidePositions.contains(positionToAdd)){
+                                    insidePositions.add(positionToAdd);
+                                }
+                            }
+                        }
+                        for (int i = 1; i < 100; i++) {
+                            positionToCompare.setRowPosition(positionToCompare.getRowPosition()+1);
+                            if (knownPositions.contains(positionToCompare)){
+                                break;
+                            } else if (positionToCompare.getRowPosition() >= 0 && positionToCompare.getRowPosition() <= inputArrayList.get(0).length()-1){
+                                Position positionToAdd = new Position(positionToCompare);
+                                if (!insidePositions.contains(positionToAdd)){
+                                    insidePositions.add(positionToAdd);
+                                }
+                            }
+                        }
+                    }else if (charToCompare == '-'){
+                        for (int i = 1; i < 100; i++) {
                             positionToCompare.setColumnPosition(positionToCompare.getColumnPosition()+1);
                             if (knownPositions.contains(positionToCompare)){
                                 break;
@@ -115,6 +167,29 @@ public class Day10 {
                 case "right" -> {
 
                     if (charToCompare == 'F'){
+                        for (int i = 1; i < 100; i++) {
+                            positionToCompare.setColumnPosition(positionToCompare.getColumnPosition()-1);
+                            if (knownPositions.contains(positionToCompare)){
+                                break;
+                            } else if (positionToCompare.getColumnPosition() >= 0 && positionToCompare.getColumnPosition() <= inputArrayList.size()-1){
+                                Position positionToAdd = new Position(positionToCompare);
+                                if (!insidePositions.contains(positionToAdd)){
+                                    insidePositions.add(positionToAdd);
+                                }
+                            }
+                        }
+                        for (int i = 1; i < 100; i++) {
+                            positionToCompare.setRowPosition(positionToCompare.getRowPosition()-1);
+                            if (knownPositions.contains(positionToCompare)){
+                                break;
+                            } else if (positionToCompare.getRowPosition() >= 0 && positionToCompare.getRowPosition() <= inputArrayList.get(0).length()-1){
+                                Position positionToAdd = new Position(positionToCompare);
+                                if (!insidePositions.contains(positionToAdd)){
+                                    insidePositions.add(positionToAdd);
+                                }
+                            }
+                        }
+                    }else if (charToCompare == '-'){
                         for (int i = 1; i < 10; i++) {
                             positionToCompare.setColumnPosition(positionToCompare.getColumnPosition()-1);
                             if (knownPositions.contains(positionToCompare)){
@@ -213,30 +288,44 @@ public class Day10 {
 
     public static PositionOfChar findWhereToMoveFromStart(PositionOfChar inputPosition, List<String> listToCheck){
         List<Position> listOfPossiblePositions = new ArrayList<>();
-        listOfPossiblePositions.add(new Position(inputPosition.getColumnPosition()-1,inputPosition.getRowPosition()));
-        listOfPossiblePositions.add(new Position(inputPosition.getColumnPosition()+1,inputPosition.getRowPosition()));
-        listOfPossiblePositions.add(new Position(inputPosition.getColumnPosition(),inputPosition.getRowPosition()+1));
-        listOfPossiblePositions.add(new Position(inputPosition.getColumnPosition(),inputPosition.getRowPosition()-1));
+            listOfPossiblePositions.add(new Position(inputPosition.getColumnPosition()-1,inputPosition.getRowPosition()));
+            listOfPossiblePositions.add(new Position(inputPosition.getColumnPosition(),inputPosition.getRowPosition()+1));
+            listOfPossiblePositions.add(new Position(inputPosition.getColumnPosition()+1,inputPosition.getRowPosition()));
+            listOfPossiblePositions.add(new Position(inputPosition.getColumnPosition(),inputPosition.getRowPosition()-1));
+
         PositionOfChar newPosition = new PositionOfChar();
 
-                    if ((upOfChar.contains(getCharAtPosition(listOfPossiblePositions.get(0),listToCheck)) && !listOfPossiblePositions.get(0).equals(lastPosition)))  {
-                        newPosition.setColumnPosition(inputPosition.getColumnPosition() - 1);
-                        newPosition.setRowPosition(inputPosition.getRowPosition());
-                        newPosition.setMovedFrom("down");
-                    } else if (rightOfChar.contains(getCharAtPosition(listOfPossiblePositions.get(2),listToCheck)) && !listOfPossiblePositions.get(2).equals(lastPosition)) {
-                        newPosition.setColumnPosition(inputPosition.getColumnPosition());
-                        newPosition.setRowPosition(inputPosition.getRowPosition() + 1);
-                        newPosition.setMovedFrom("left");
-                    } else if (downOfChar.contains(getCharAtPosition(listOfPossiblePositions.get(1),listToCheck)) && !listOfPossiblePositions.get(1).equals(lastPosition)) {
-                        newPosition.setColumnPosition(inputPosition.getColumnPosition() + 1);
-                        newPosition.setRowPosition(inputPosition.getRowPosition());
-                        newPosition.setMovedFrom("up");
-                    } else if (leftOfChar.contains(getCharAtPosition(listOfPossiblePositions.get(3),listToCheck)) && !listOfPossiblePositions.get(3).equals(lastPosition)){
-                        newPosition.setColumnPosition(inputPosition.getColumnPosition());
-                        newPosition.setRowPosition(inputPosition.getRowPosition() - 1);
-                        newPosition.setMovedFrom("right");
-                    } else {
-                        newPosition = startingPosition;
+                    for (Position position : listOfPossiblePositions){
+                        if (0 < position.getColumnPosition() ||
+                                inputArrayList.size() > position.getColumnPosition() ||
+                                0 < position.getRowPosition() ||
+                                inputArrayList.get(0).length() < position.getRowPosition()){
+                            if (upOfChar.contains(getCharAtPosition(listOfPossiblePositions.get(0),listToCheck)) && !listOfPossiblePositions.get(0).equals(lastPosition))  {
+                                    newPosition.setColumnPosition(inputPosition.getColumnPosition() - 1);
+                                    newPosition.setRowPosition(inputPosition.getRowPosition());
+                                    newPosition.setMovedFrom("down");
+                                    break;
+                            } else if (rightOfChar.contains(getCharAtPosition(listOfPossiblePositions.get(1),listToCheck)) && !listOfPossiblePositions.get(2).equals(lastPosition)) {
+                                    newPosition.setColumnPosition(inputPosition.getColumnPosition());
+                                    newPosition.setRowPosition(inputPosition.getRowPosition() + 1);
+                                    newPosition.setMovedFrom("left");
+                                    break;
+                            } else if (downOfChar.contains(getCharAtPosition(listOfPossiblePositions.get(2),listToCheck)) && !listOfPossiblePositions.get(1).equals(lastPosition)){
+                                    newPosition.setColumnPosition(inputPosition.getColumnPosition() + 1);
+                                    newPosition.setRowPosition(inputPosition.getRowPosition());
+                                    newPosition.setMovedFrom("up");
+                                    break;
+                            } else if (leftOfChar.contains(getCharAtPosition(listOfPossiblePositions.get(3),listToCheck)) && !listOfPossiblePositions.get(3).equals(lastPosition)) {
+                                    newPosition.setColumnPosition(inputPosition.getColumnPosition());
+                                    newPosition.setRowPosition(inputPosition.getRowPosition() - 1);
+                                    newPosition.setMovedFrom("right");
+                                    break;
+                            } else {
+                                newPosition = startingPosition;
+                                break;
+                        }
+                    }
+
                     }
         lastPosition = inputPosition;
                 return newPosition;
