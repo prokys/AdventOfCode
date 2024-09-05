@@ -11,22 +11,35 @@ public class Day11 {
     public static List<String> expandedFromTopToBottomList = new ArrayList<>();
     public static List<String> completelyExpandedList = new ArrayList<>();
     public static List<Position> positionsOfChar = new ArrayList<>();
+    public static int finalNumber = 0;
     public static void main(String[] args) {
 
         expandedFromTopToBottomList = expandRows(inputArrayList);
         List<String> transposedList = transposeList(expandedFromTopToBottomList);
         completelyExpandedList = expandRows(transposedList);
 
-        for (String value : completelyExpandedList){
-            System.out.println(value);
-        }
-
         positionsOfChar = getPositionsOfChar(completelyExpandedList, '#');
 
-        for (Position position : positionsOfChar){
-            System.out.println(position);
-        }
+        finalNumber = computeCharDistances(positionsOfChar);
 
+        System.out.println(finalNumber);
+    }
+
+    public static int computeCharDistances(List<Position> positions){
+        int number = 0;
+        for (int i = 0; i < positions.size(); i++) {
+            for (int j = i+1; j < positions.size(); j++) {
+                int rowPositionOne = positions.get(i).getRowPosition();
+                int rowPositionTwo = positions.get(j).getRowPosition();
+
+                int columnPositionOne = positions.get(i).getColumnPosition();
+                int columnPositionTwo = positions.get(j).getColumnPosition();
+
+                number = number + Math.abs(rowPositionOne-rowPositionTwo) + Math.abs(columnPositionOne - columnPositionTwo);
+            }
+
+        }
+        return number;
     }
 
     public static List<Position> getPositionsOfChar(List<String> inputList, char charToFind){
