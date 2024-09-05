@@ -11,22 +11,46 @@ public class Day11 {
     public static List<String> expandedFromTopToBottomList = new ArrayList<>();
     public static List<String> completelyExpandedList = new ArrayList<>();
     public static List<Position> positionsOfChar = new ArrayList<>();
-    public static int finalNumber = 0;
+    public static List<Integer> columnExpandsList = new ArrayList<>();
+    public static List<Integer> rowExpandsList = new ArrayList<>();
+
+    public static long finalNumber = 0;
+    public static long finalNumberTwo = 0;
     public static void main(String[] args) {
+        rowExpandsList = getExpandPoints(inputArrayList);
+        columnExpandsList = getExpandPoints(transposeList(inputArrayList));
 
-        expandedFromTopToBottomList = expandRows(inputArrayList);
-        List<String> transposedList = transposeList(expandedFromTopToBottomList);
-        completelyExpandedList = expandRows(transposedList);
+        positionsOfChar = getPositionsOfChar(inputArrayList, '#');
 
-        positionsOfChar = getPositionsOfChar(completelyExpandedList, '#');
+        partOne();
 
-        finalNumber = computeCharDistances(positionsOfChar);
+        partTwo();
+    }
+
+    public static void partTwo(){
+        finalNumberTwo = computeCharDistances(positionsOfChar, 999999, columnExpandsList, rowExpandsList);
+
+        System.out.println(finalNumberTwo);
+    }
+
+    public static List<Integer> getExpandPoints(List<String> inputList){
+        List<Integer> expandPoints = new ArrayList<>();
+        for (int i = 0; i < inputList.size(); i++){
+            if (!inputList.get(i).contains("#")){
+                expandPoints.add(i);
+            }
+        }
+        return expandPoints;
+    }
+
+    public static void partOne(){
+        finalNumber = computeCharDistances(positionsOfChar, 1, columnExpandsList, rowExpandsList);
 
         System.out.println(finalNumber);
     }
 
-    public static int computeCharDistances(List<Position> positions){
-        int number = 0;
+    public static long computeCharDistances(List<Position> positions, long expandMultiplier, List<Integer> rowExpands, List<Integer> columnExpands){
+        long number = 0;
         for (int i = 0; i < positions.size(); i++) {
             for (int j = i+1; j < positions.size(); j++) {
                 int rowPositionOne = positions.get(i).getRowPosition();
@@ -36,6 +60,22 @@ public class Day11 {
                 int columnPositionTwo = positions.get(j).getColumnPosition();
 
                 number = number + Math.abs(rowPositionOne-rowPositionTwo) + Math.abs(columnPositionOne - columnPositionTwo);
+
+                for (int row : rowExpands){
+                    if (rowPositionOne > row && row > rowPositionTwo){
+                        number = number+expandMultiplier;
+                    } else if (rowPositionTwo > row && row > rowPositionOne) {
+                        number = number+expandMultiplier;
+                    }
+                }
+                for (int column : columnExpands){
+                    if (columnPositionOne > column && column > columnPositionTwo){
+                        number = number+expandMultiplier;
+                    } else if (columnPositionTwo > column && column > columnPositionOne) {
+                        number = number+expandMultiplier;
+                    }
+                }
+
             }
 
         }
