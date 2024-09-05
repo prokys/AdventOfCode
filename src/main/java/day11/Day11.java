@@ -17,10 +17,33 @@ public class Day11 {
         List<String> transposedList = transposeList(expandedFromTopToBottomList);
         completelyExpandedList = expandRows(transposedList);
 
-        for (String row : completelyExpandedList){
-            System.out.println(row);
+        for (String value : completelyExpandedList){
+            System.out.println(value);
         }
 
+        positionsOfChar = getPositionsOfChar(completelyExpandedList, '#');
+
+        for (Position position : positionsOfChar){
+            System.out.println(position);
+        }
+
+    }
+
+    public static List<Position> getPositionsOfChar(List<String> inputList, char charToFind){
+        List<Position> positions = new ArrayList<>();
+
+        for (int i = 0; i < inputList.size(); i++) {
+            int row = 0;
+            do {
+                int index = inputList.get(i).indexOf(charToFind, row);
+                if(index == -1){
+                    break;
+                }
+                positions.add(new Position(i,index));
+                row = index+1;
+            } while (row < inputList.get(0).length());
+        }
+        return positions;
     }
 
 
