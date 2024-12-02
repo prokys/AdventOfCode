@@ -1,5 +1,6 @@
 package day1;
 
+import AOC2023.day1.Day1;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

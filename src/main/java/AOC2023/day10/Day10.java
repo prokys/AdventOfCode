@@ -1,15 +1,15 @@
-package day10;
+package AOC2023.day10;
 
-import utils.Position;
-import utils.PositionOfChar;
-import utils.Utils;
+import AOC2023.utils.Position;
+import AOC2023.utils.PositionOfChar;
+import AOC2023.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Day10 {
-    public static List<String> inputArrayList = Utils.readFileAndStoreValues("src\\main\\java\\day10\\input.txt");
+    public static List<String> inputArrayList = Utils.readFileAndStoreValues("src\\main\\java\\AOC2023\\day10\\input.txt");
     public static PositionOfChar startingPosition = getPositionOfChar('S', inputArrayList);
     public static PositionOfChar lastPosition = new PositionOfChar();
     public static PositionOfChar positionOfChar = new PositionOfChar();

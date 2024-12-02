@@ -1,6 +1,6 @@
-package day8;
+package AOC2023.day8;
 
-import utils.Utils;
+import AOC2023.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Day8 {
-    public static List<String> inputArrayList = Utils.readFileAndStoreValues("src\\main\\java\\day8\\input.txt");
+    public static List<String> inputArrayList = Utils.readFileAndStoreValues("src\\main\\java\\AOC2023\\day8\\input.txt");
     public static List<String> node = new ArrayList<>();
     public static List<String> leftPath = new ArrayList<>();
     public static List<String> rightPath = new ArrayList<>();

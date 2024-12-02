@@ -1,14 +1,14 @@
-package day1;
+package AOC2023.day1;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
-import utils.*;
+import AOC2023.utils.Utils;
 
 
 public class Day1 {
-    public static List<String> inputArrayList = Utils.readFileAndStoreValues("src\\main\\java\\day1\\input.txt");
+    public static List<String> inputArrayList = Utils.readFileAndStoreValues("src\\main\\java\\AOC2023\\day1\\input.txt");
     public static List<String> numbersArrayListPartOne = new ArrayList<>();
     public static List<String> twoNumbersArrayListPartOne = new ArrayList<>();
     public static List<String> numbersArrayListPartTwo = new ArrayList<>();

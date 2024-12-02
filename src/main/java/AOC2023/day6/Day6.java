@@ -1,11 +1,11 @@
-package day6;
+package AOC2023.day6;
 
-import utils.Utils;
+import AOC2023.utils.Utils;
 
 import java.util.ArrayList;
 
 public class Day6 {
-    public static ArrayList<String> inputArrayList = Utils.readFileAndStoreValues("src\\main\\java\\day6\\input.txt");
+    public static ArrayList<String> inputArrayList = Utils.readFileAndStoreValues("src\\main\\java\\AOC2023\\day6\\input.txt");
 
     private static int time = inputArrayList.indexOf("Time:");
     private static int distance = inputArrayList.indexOf("Distance:");

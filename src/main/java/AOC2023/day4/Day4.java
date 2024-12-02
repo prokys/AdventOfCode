@@ -1,11 +1,11 @@
-package day4;
+package AOC2023.day4;
 
-import utils.Utils;
+import AOC2023.utils.Utils;
 
 import java.util.ArrayList;
 
 public class Day4 {
-    public static ArrayList<String> inputArrayList = Utils.readFileAndStoreValues("src\\main\\java\\day4\\input.txt");
+    public static ArrayList<String> inputArrayList = Utils.readFileAndStoreValues("src\\main\\java\\AOC2023\\day4\\input.txt");
     public static ArrayList<Integer> scratchCardNumbersList = new ArrayList<Integer>();
 
     public static int firstWinnersNumberIndex;

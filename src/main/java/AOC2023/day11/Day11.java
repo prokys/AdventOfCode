@@ -1,13 +1,13 @@
-package day11;
+package AOC2023.day11;
 
-import utils.Position;
-import utils.Utils;
+import AOC2023.utils.Position;
+import AOC2023.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Day11 {
-    public static List<String> inputArrayList = Utils.readFileAndStoreValues("src\\main\\java\\day11\\input.txt");
+    public static List<String> inputArrayList = Utils.readFileAndStoreValues("src\\main\\java\\AOC2023\\day11\\input.txt");
     public static List<String> expandedFromTopToBottomList = new ArrayList<>();
     public static List<String> completelyExpandedList = new ArrayList<>();
     public static List<Position> positionsOfChar = new ArrayList<>();

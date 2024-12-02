@@ -1,11 +1,11 @@
-package day5;
+package AOC2023.day5;
 
-import utils.Utils;
+import AOC2023.utils.Utils;
 
 import java.util.ArrayList;
 
 public class Day5 {
-    public static ArrayList<String> inputArrayList = Utils.readFileAndStoreValues("src\\main\\java\\day5\\input.txt");
+    public static ArrayList<String> inputArrayList = Utils.readFileAndStoreValues("src\\main\\java\\AOC2023\\day5\\input.txt");
     private static int seed = inputArrayList.indexOf("seeds:");
     private static int seedToSoil = inputArrayList.indexOf("seed-to-soil");
     private static  int soilToFertilizer= inputArrayList.indexOf("soil-to-fertilizer");

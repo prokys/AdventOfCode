@@ -1,11 +1,11 @@
-package day2;
+package AOC2023.day2;
 
-import utils.Utils;
+import AOC2023.utils.Utils;
 
 import java.util.ArrayList;
 
 public class Day2 {
-    public static ArrayList<String> inputArrayList = Utils.readFileAndStoreValues("src\\main\\java\\day2\\input.txt");
+    public static ArrayList<String> inputArrayList = Utils.readFileAndStoreValues("src\\main\\java\\AOC2023\\day2\\input.txt");
     public static ArrayList<Integer> gamePositionsList = new ArrayList<Integer>();
     public static int partOneNumber =0;
     public static int partTwoNumber =0;

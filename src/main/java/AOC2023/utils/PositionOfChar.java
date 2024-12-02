@@ -1,4 +1,4 @@
-package utils;
+package AOC2023.utils;
 
 import java.util.Objects;
 

@@ -1,13 +1,13 @@
-package day9;
+package AOC2023.day9;
 
-import utils.Utils;
+import AOC2023.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Day9 {
-    public static List<String> inputArrayList = Utils.readFileAndStoreValues("src\\main\\java\\day9\\input.txt");
+    public static List<String> inputArrayList = Utils.readFileAndStoreValues("src\\main\\java\\AOC2023\\day9\\input.txt");
     public static List<List<Integer>> splitArrayList = new ArrayList<>();
 
     public static int finalNumber = 0;
