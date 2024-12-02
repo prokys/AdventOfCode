@@ -1,6 +1,6 @@
 package AOC2023.day3;
 
-import AOC2023.utils.Utils;
+import utils.Utils;
 
 import java.util.ArrayList;
 

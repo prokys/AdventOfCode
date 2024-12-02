@@ -1,8 +1,8 @@
 package AOC2023.day10;
 
-import AOC2023.utils.Position;
-import AOC2023.utils.PositionOfChar;
-import AOC2023.utils.Utils;
+import utils.Position;
+import utils.PositionOfChar;
+import utils.Utils;
 
 import java.util.ArrayList;
 import java.util.Arrays;

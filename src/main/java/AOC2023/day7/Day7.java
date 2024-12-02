@@ -1,7 +1,7 @@
 package AOC2023.day7;
 
-import AOC2023.utils.CardDeckComparator;
-import AOC2023.utils.Utils;
+import utils.CardDeckComparator;
+import utils.Utils;
 
 import java.util.*;
 

@@ -1,6 +1,6 @@
 package AOC2024.day1;
 
-import AOC2023.utils.Utils;
+import utils.Utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -4,7 +4,7 @@ package AOC2023.day1;
 import java.util.ArrayList;
 import java.util.List;
 
-import AOC2023.utils.Utils;
+import utils.Utils;
 
 
 public class Day1 {
