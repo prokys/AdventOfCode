@@ -1,22 +1,11 @@
 package AOC2025.day1;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import static utils.Utils.readFileAndStoreValues;
-
 public class Day1 {
 
     static int startCode = 50;
-    static List<String> inputList = readFileAndStoreValues("src/main/java/AOC2025/day1/input.txt");
-//    static List<String> inputList = Arrays.asList("L50", "L100");
+    static int roll;
 
-    public static void main(String[] args) {
-        partOne();
-    }
-
-    public static void partOne(){
+    public static int partOne(String[] inputList){
         int code = startCode;
         int finalNumber = 0;
 
@@ -26,7 +15,18 @@ public class Day1 {
             if (code == 0) finalNumber++;
         }
 
-        System.out.println(finalNumber);
+       return finalNumber;
+    }
+
+    public static int partTwo(String[] inputList){
+        int code = startCode;
+        roll = 0;
+
+        for (String input : inputList){
+            code = countCode(input, code);
+        }
+
+        return roll;
     }
 
 
@@ -34,14 +34,23 @@ public class Day1 {
 
         char direction = input.charAt(0);
         int clicks = Integer.parseInt(input.substring(1));
+        int previous = code;
 
         switch (direction){
             case 'L':{
                 code = code - clicks;
+                if (code < 0){
+                    code = fixOverFlow(code);
+                    if (code == 0) roll++;
+                    if (previous == 0) roll --;
+                }else if(code==0) roll++;
                 break;
             }
             case 'R':{
                 code = code + clicks;
+                if (code > 99){
+                    code = fixOverFlow(code);
+                }else if(code==0) roll++;
                 break;
             }
         }
@@ -50,6 +59,7 @@ public class Day1 {
 
     public static int fixOverFlow(int input){
         do {
+            roll++;
         if (input < 0) input = input+100;
         else if (input > 99) input = input-100;
         }while (input < 0 || input > 99);
