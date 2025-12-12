@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static AOC2025.day4.Day4.partOne;
+import static AOC2025.day4.Day4.partTwo;
 
 public class Day4Test {
     static Stream<Arguments> data() {
@@ -36,4 +37,27 @@ public class Day4Test {
         Assertions.assertEquals(result, partOne(input));
     }
 
+    static Stream<Arguments> dataTwo() {
+        List<String> input = Utils.readFileAndStoreValues("src/main/java/AOC2025/day4/input.txt");
+        return Stream.of(
+                Arguments.of(List.of(
+                        "..@@.@@@@.",
+                        "@@@.@.@.@@",
+                        "@@@@@.@.@@",
+                        "@.@@@@..@.",
+                        "@@.@@@@.@@",
+                        ".@@@@@@@.@",
+                        ".@.@.@.@@@",
+                        "@.@@@.@@@@",
+                        ".@@@@@@@@.",
+                        "@.@.@@@.@.") , 43),
+                Arguments.of(input, 8890)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("dataTwo")
+    public void testPartTwo(List<String> input, int result){
+        Assertions.assertEquals(result, partTwo(input));
+    }
 }

@@ -26,6 +26,33 @@ public class Day4 {
         return finalNumber;
     }
 
+    public static int partTwo(List<String> inputList){
+
+        List<String> listToModify = new ArrayList<>(inputList);
+        int finalNumber = 0;
+        int count;
+        do {
+            count = 0;
+            for (int i = 0; i < listToModify.size(); i++) {
+                for (int j = 0; j < listToModify.get(0).length(); j++) {
+
+                    char center = listToModify.get(i).charAt(j);
+                    if (center == '@'){
+                        if (countRolls(i, j, listToModify)){
+                            count++;
+                            StringBuilder stringBuilder = new StringBuilder(listToModify.get(i));
+                            stringBuilder.setCharAt(j, 'x');
+                            listToModify.set(i,stringBuilder.toString());
+                        }
+                    }
+                }
+            }
+            finalNumber = finalNumber + count;
+        }while (count > 0);
+
+        return finalNumber;
+    }
+
     private static boolean countRolls(int row, int column, List<String> inputList) {
         List<Position> positionsList = getPositions(row, column, inputList.size());
         int numberOfRolls = 0;
@@ -36,7 +63,6 @@ public class Day4 {
                 numberOfRolls++;
             }
         }
-        System.out.println("Position: "+row+", "+column+" has "+numberOfRolls+" around");
         return numberOfRolls < 4;
     }
 
