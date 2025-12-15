@@ -1,12 +1,14 @@
 package AOC2025.day5;
 
+import utils.Range;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
+
 
 public class Day5 {
 
-    static List<Long> ranges;
+    static List<Range> ranges;
     static List<Long> ingredients;
 
     public static int partOne(List<String> input){
@@ -15,8 +17,8 @@ public class Day5 {
         splitList(input);
 
         for (long ingredient : ingredients){
-            for (int i = 0; i < ranges.size(); i+=2) {
-                if (ingredient >= ranges.get(i) && ingredient <= ranges.get(i+1)){
+            for (Range range : ranges) {
+                if (ingredient >= range.getStart() && ingredient <= range.getEnd()) {
                     finalNumber++;
                     break;
                 }
@@ -24,6 +26,11 @@ public class Day5 {
         }
 
         return finalNumber;
+    }
+
+    public static long partTwo(List<String> input){
+
+        return 0;
     }
 
     public static void splitList(List<String> input){
@@ -41,8 +48,7 @@ public class Day5 {
         for (int i = 0; i < firstIngredient; i++) {
             String line = input.get(i);
             int dash = line.indexOf('-');
-            ranges.add(Long.parseLong(line.substring(0,dash)));
-            ranges.add(Long.parseLong(line.substring(dash+1)));
+            ranges.add(new Range(Long.parseLong(line.substring(0,dash)), Long.parseLong(line.substring(dash+1))));
         }
         for (int i = firstIngredient; i < input.size(); i++) {
             ingredients.add(Long.parseLong(input.get(i)));
