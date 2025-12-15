@@ -45,6 +45,18 @@ public class Range {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Range range = (Range) o;
+        return start == range.start && end == range.end;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(start, end);
+    }
+
     public boolean mergeRange(Range rangeToMerge){
 
         if (this.start == rangeToMerge.getStart() && this.end == rangeToMerge.getEnd()) {
