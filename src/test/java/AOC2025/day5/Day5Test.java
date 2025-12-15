@@ -52,13 +52,13 @@ public class Day5Test {
                         "11",
                         "17",
                         "32") , 14),
-                Arguments.of(input, 1489)
+                Arguments.of(input, 353863745078671L)
         );
     }
 
     @ParameterizedTest
     @MethodSource("dataTwo")
-    public void testPartTwo(List<String> input, int result){
+    public void testPartTwo(List<String> input, long result){
         Assertions.assertEquals(result, partTwo(input));
     }
 }

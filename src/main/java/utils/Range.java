@@ -1,5 +1,7 @@
 package utils;
 
+import java.util.Objects;
+
 public class Range {
 
     private long start;
@@ -26,6 +28,11 @@ public class Range {
         this.end = end;
     }
 
+    public Range(Range range) {
+        this.start = range.getStart();
+        this.end = range.getEnd();
+    }
+
     public long getSize() {
         return this.end - this.start + 1;
     }
@@ -39,18 +46,17 @@ public class Range {
     }
 
     public boolean mergeRange(Range rangeToMerge){
-        if (this.start <= rangeToMerge.getStart() && this.end >= rangeToMerge.getEnd()){
-            return true;
-        } else if (this.start >= rangeToMerge.getStart() && this.end >= rangeToMerge.getEnd()) {
-            this.start = rangeToMerge.getStart();
-            return true;
-        } else if (this.start <= rangeToMerge.getStart() && this.end <= rangeToMerge.getEnd()) {
-            this.end = rangeToMerge.getEnd();
-            return true;
-        } else if (this.start >= rangeToMerge.getStart() && this.end <= rangeToMerge.getEnd()) {
-            this.start = rangeToMerge.getStart();
-            this.end = rangeToMerge.getEnd();
-            return true;
-        }else return false;
+
+        if (this.start == rangeToMerge.getStart() && this.end == rangeToMerge.getEnd()) {
+            return false;
+        }
+
+        if (this.end < rangeToMerge.getStart() || rangeToMerge.getEnd() < this.start) {
+            return false;
+        }
+
+        this.start = Math.min(this.start, rangeToMerge.getStart());
+        this.end   = Math.max(this.end, rangeToMerge.getEnd());
+        return true;
     }
 }

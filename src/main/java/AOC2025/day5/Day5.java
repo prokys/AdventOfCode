@@ -3,6 +3,7 @@ package AOC2025.day5;
 import utils.Range;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 
@@ -30,7 +31,24 @@ public class Day5 {
 
     public static long partTwo(List<String> input){
 
-        return 0;
+        long finalNumber = 0;
+        List<Boolean> wasThereMerge;
+        splitList(input);
+        do {
+            wasThereMerge = new ArrayList<>();
+            for (Range range : ranges){
+                for (Range rangeToMerge: ranges){
+                    wasThereMerge.add(range.mergeRange(rangeToMerge));
+                }
+            }
+        }while (wasThereMerge.contains(true));
+
+        List<Range> finalRanges = new ArrayList<>(new HashSet<>(ranges));
+
+        for (Range range : finalRanges){
+            finalNumber = finalNumber + range.getSize();
+        }
+        return finalNumber;
     }
 
     public static void splitList(List<String> input){
