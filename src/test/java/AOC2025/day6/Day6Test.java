@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static AOC2025.day6.Day6.partOne;
+import static AOC2025.day6.Day6.partTwo;
 
 public class Day6Test {
 
@@ -30,5 +31,25 @@ public class Day6Test {
     @MethodSource("data")
     public void testPartOne(List<List<String>> input, long result){
         Assertions.assertEquals(result, partOne(input));
+    }
+
+    static Stream<Arguments> dataTwo() {
+        List<String> input = Utils.readFileLinesAndStoreLines("src/main/java/AOC2025/day6/input.txt");
+        return Stream.of(
+                Arguments.of(
+                        List.of(
+                                "123 328  51 64 ",
+                                " 45 64  387 23 ",
+                                "  6 98  215 314",
+                                "*   +   *   +  "),
+                        3263827),
+                Arguments.of(input, 7858808482092L)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("dataTwo")
+    public void testPartTwo(List<String> input, long result){
+        Assertions.assertEquals(result, partTwo(input));
     }
 }

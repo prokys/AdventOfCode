@@ -48,6 +48,24 @@ public class Utils {
         }
         return finalArrayList;
     }
+
+    public static List<String> readFileLinesAndStoreLines(String path){
+        List<String> finalArrayList = new ArrayList<>();
+
+        try{
+            File file = new File(path);
+            Scanner scanner = new Scanner(file);
+            do {
+                finalArrayList.add(scanner.nextLine());
+            }while (scanner.hasNext());
+        }
+        catch(Exception e){
+            System.out.println("File does not exist");
+            e.printStackTrace();
+        }
+
+        return finalArrayList;
+    }
     public static void printArray(String[] array){
         for (int i=0; i<array.length;i++){
             System.out.println(array[i]);
