@@ -19,6 +19,43 @@ public class Day8 {
         return getTopThreeMultiplied(circuits);
     }
 
+    public static long partTwo(List<String> input, int coordinatesNum){
+
+        List<Coordinates3D> coordinates = getCoordinates(input);
+        List<List<Integer>> distances = getDistances(coordinates);
+        List<Integer> allDistances = getAllDistances(distances);
+        Collections.sort(allDistances);
+        List<Coordinates3D> lastTwo = getLastTwoCoordinates(allDistances, distances, coordinates, coordinatesNum);
+
+        return (long) lastTwo.get(0).getX() *lastTwo.get(1).getX();
+    }
+
+    private static List<Coordinates3D> getLastTwoCoordinates(List<Integer> allDistances, List<List<Integer>> distances, List<Coordinates3D> coordinates, int coordinatesNum){
+        Set<Coordinates3D> coord = new LinkedHashSet<>();
+        List<Coordinates3D> lastTwo = new ArrayList<>();
+
+        for (int distance: allDistances){
+            for (int i = 0; i < distances.size(); i++) {
+                for (int j = i; j < distances.get(0).size(); j++) {
+                    if (distance == distances.get(i).get(j)){
+                        coord.add(coordinates.get(i));
+                        coord.add(coordinates.get(j));
+                        if (coord.size()>=coordinatesNum){
+                            lastTwo.add(coordinates.get(i));
+                            lastTwo.add(coordinates.get(j));
+                            System.out.println(coordinates.get(i));
+                            System.out.println(coordinates.get(j));
+                            break;
+                        }
+                    }
+                }
+                if (lastTwo.size() == 2) break;
+            }
+            if (lastTwo.size() == 2) break;
+        }
+        return lastTwo;
+    }
+
     private static int getTopThreeMultiplied(Set<Set<Coordinates3D>> circuits){
         int highest = 0;
         int second = 0;
