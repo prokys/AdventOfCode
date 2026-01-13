@@ -2,6 +2,8 @@ package utils;
 
 import java.util.Objects;
 
+import static java.lang.Math.abs;
+
 public class PositionOfChar extends Position{
 
     private String movedFrom;
@@ -38,10 +40,12 @@ public class PositionOfChar extends Position{
                 '}';
     }
 
-
-
     @Override
     public int hashCode() {
         return Objects.hash(movedFrom);
+    }
+
+    public long getArea(PositionOfChar positionOfChar){
+        return (long) (abs(this.getRowPosition() - positionOfChar.getRowPosition()) + 1) *( abs(this.getColumnPosition()-positionOfChar.getColumnPosition())+1);
     }
 }
