@@ -19,6 +19,7 @@ public class Day9 {
 
     public static long partTwo(List<String> input){
 
+        long start = System.nanoTime();
         long area = 0;
         List<Coordinates2D> coordinates = getCoordinates(input);
         List<PositionOfChar> positions = getPositions(coordinates);
@@ -53,6 +54,8 @@ public class Day9 {
             }
         }
 
+        long end = System.nanoTime();
+        System.out.println(end-start);
         return area;
     }
 
@@ -64,38 +67,38 @@ public class Day9 {
             PositionOfChar newPosition;
             switch (position.getMovedFrom()){
                 case "left":{
-                    for (int i = position.getRowPosition()+1; i < position.getRowPosition()+100000; i++) {
-                         newPosition = new PositionOfChar(position.getColumnPosition(),i);
-                        if (!borders.contains(newPosition)){
-                            positions.add(newPosition);
-                        }else break;
+                    int i = position.getRowPosition();
+                    while (!borders.contains( new PositionOfChar(position.getColumnPosition(),i+1))){
+                        i++;
+                        newPosition = new PositionOfChar(position.getColumnPosition(),i);
+                        positions.add(newPosition);
                     }
                     break;
                 }
                 case "right":{
-                    for (int i = position.getRowPosition()-1; i > position.getRowPosition()-100000; i--) {
+                    int i = position.getRowPosition();
+                    while (!borders.contains( new PositionOfChar(position.getColumnPosition(),i-1))){
+                        i--;
                         newPosition = new PositionOfChar(position.getColumnPosition(),i);
-                        if (!borders.contains(newPosition)){
-                            positions.add(newPosition);
-                        }else break;
+                        positions.add(newPosition);
                     }
                     break;
                 }
                 case "top":{
-                    for (int i = position.getColumnPosition()-1; i > position.getColumnPosition()-100000; i--) {
+                    int i = position.getColumnPosition();
+                    while (!borders.contains(new PositionOfChar(i-1,position.getRowPosition()))){
+                        i--;
                         newPosition = new PositionOfChar(i,position.getRowPosition());
-                        if (!borders.contains(newPosition)){
-                            positions.add(newPosition);
-                        }else break;
+                        positions.add(newPosition);
                     }
                     break;
                 }
                 case "bot":{
-                    for (int i = position.getColumnPosition()+1; i < position.getColumnPosition()+100000; i++) {
+                    int i = position.getColumnPosition();
+                    while (!borders.contains(new PositionOfChar(i+1,position.getRowPosition()))){
+                        i++;
                         newPosition = new PositionOfChar(i,position.getRowPosition());
-                        if (!borders.contains(newPosition)){
-                            positions.add(newPosition);
-                        }else break;
+                        positions.add(newPosition);
                     }
                     break;
                 }
